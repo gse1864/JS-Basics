@@ -9,13 +9,11 @@ var outer = function(){
 //Above you're given a function that returns another function which has a closure over the name variable.
 //Invoke outer saving the return value into another variable called 'inner'.
 
-  //Code Here
+  var inner = outer();
 
 //Once you do that, invoke inner.
 
-  //Code Here
-
-
+  inner();
 
 //Next problem
 
@@ -32,8 +30,8 @@ var callFriend = function(){
 //Above you're given a callFriend function that returns another function.
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
-  //Code Here
-
+  var result = callFriend();
+  console.log(result(140-340-1238));
 
 
 //Next Problem
@@ -44,7 +42,14 @@ var callFriend = function(){
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
+  var makeCounter = function() {
+      var num1 = 1;
+      function increase() {
+          return num1++;
+      }
+      return increase;
+  }
+  
   var count = makeCounter();
   count() // 1
   count() // 2
@@ -62,8 +67,14 @@ var callFriend = function(){
   (which invokes the original function that was passed in) that can only ever be executed once.
 */
 
-  //Code Here
-
+  function first() {
+      return "Complete";
+  }
+  
+  var second = function(first()) {
+      var third = first();
+      return third;
+  }
 
 
 //Next Problem
@@ -74,6 +85,22 @@ var callFriend = function(){
   Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters. The first parameter will be an anonymous function and the second parameter, 'N', will be a number. Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times. After it's been invoked 'N' number of times, return 'STOP'.
 */
 
+var Count = function () {
+    //alert("Hello");
+    return "Hello";
+}
+
+function fnCounter(func1, num1) {
+    var i;
+    for (var i = 1; i < num1; i++) {
+        Count();
+    }
+    //alert("STOP");
+    return "STOP";
+}
+
+var x = 2;
+fnCounter(Count(), x);
 
 
 //Next Problem
@@ -91,21 +118,28 @@ var callFriend = function(){
 
   Above you have a function named counter. Examine the function (without running the code) then below write what you expect to happen when the funciton is invoked. *Hint: setTimeout calls a function or evaluates an expression after a specified number of milliseconds.
 
-    //Answer Here
+    I think the function is trying to list the numbers 1, 2, 3, 4, and 5.
 
 
   Now, run the function in your console and note what happpens.
 
   Was your answer right or wrong?
 
-    //Answer Here
+    Wrong; it doesn't work.
 
 
   Fix the counter function so that it works the way you expect it to work. (logging 1 then 2 then 3, etc)
 */
 
-    //Code Here
-
+    var counter = function(){
+    setTimeout( function timer(){
+        for (var i=1; i<=5; i++) {
+            console.log( i ); 
+        }
+      }, 1000 );
+  };
+  
+counter();
 
 
 //Next Problem
